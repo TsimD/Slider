@@ -3,6 +3,9 @@ const slider = document.querySelector('.slider');
 const blur = document.querySelector('.blur');
 const pagin = document.querySelector('.pagin');
 const pagin_2 = document.querySelector('.pagin_2');
+const themes = document.querySelector('.themes');
+const body = document.querySelector('body');
+const title = document.querySelector('title');
 
 let pagin_count;
 
@@ -130,6 +133,16 @@ document.addEventListener('keydown', (e) => {
     }
 })
 
+themes.innerHTML= "Black";
+themes.addEventListener('click', (e) => {
+
+    e.target.classList.toggle('white_theme')
+    body.classList.toggle('black_theme')
+    title.classList.toggle('black_theme')
+
+    e.target.classList.contains('white_theme')? themes.innerHTML= "White" : themes.innerHTML= "Black";
 
 
-console.dir(slider_block)
+
+    console.log(body)
+});
