@@ -23,18 +23,17 @@ function class_reemuve(e, className) {
 }
 
 function img_set(e) {
-    slider.innerHTML = `<img src=${e} class="img"/>`;
+    slider.style.cssText = `
+    background:url(${e});  
+    background-size: cover;
+    transition: all 0.5s;`
 
-
-    // slider_block.style.backgroundImage = `url(${data_img[0]})`;
-    slider_block.style.cssText = `
-        background:url(${e});  
-        background-size: cover;`
 
     blur.style.cssText = `
         background:url(${e});  
         background-size: cover;
-        filter: blur(5px);`
+        filter: blur(5px);
+        transition: all 0.8s;`
 
 
 }
