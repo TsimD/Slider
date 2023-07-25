@@ -24,6 +24,7 @@
     left: 50%;
     margin-right: -50%;
     border-radius: 20px;
+    box-shadow: 6px 7px 4px rgba(29, 29, 29, 0.5);
 }
 
 .blur {

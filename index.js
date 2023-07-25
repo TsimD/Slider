@@ -56,14 +56,13 @@ for (let i = 1; i <= data_img.length; i++) {
             class_reemuve(item, 'pagin_btn')
         })
         reemuve_img = +e.target.id - 1;
-        // console.log(e.target.id);
 
         img_set(data_img[reemuve_img]);
 
 
         class_add(e.target, 'btn_active')
+        pagin_2_text.innerHTML = reemuve_img+1;
 
-        // console.log(e);
     }))
 }
 
