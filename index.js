@@ -2,6 +2,7 @@ const slider_block = document.querySelector('.slider_block');
 const slider = document.querySelector('.slider');
 const blur = document.querySelector('.blur');
 const pagin = document.querySelector('.pagin');
+const pagin_2 = document.querySelector('.pagin_2');
 
 let pagin_count;
 
@@ -37,6 +38,7 @@ function img_set(e) {
 
 
 }
+
 img_set(data_img[0]);
 
 let reemuve_img;
@@ -50,10 +52,10 @@ for (let i = 1; i <= data_img.length; i++) {
         pagin_btn.forEach(item => {
             class_reemuve(item, 'pagin_btn')
         })
-        reemuve_img = data_img[+e.target.id - 1];
+        reemuve_img = +e.target.id - 1;
         // console.log(e.target.id);
 
-        img_set(reemuve_img);
+        img_set(data_img[reemuve_img]);
 
 
         class_add(e.target, 'btn_active')
@@ -62,6 +64,71 @@ for (let i = 1; i <= data_img.length; i++) {
     }))
 }
 
+pagin_2.innerHTML = `
+        <div class="pagin_2_cont">
+            <button class="btn_down">${"<"}</button>
+            <div class="pagin_2_text"></div>
+            <button class="btn_up">${">"}</button>
+        </div>
+        `
+const btn_down = document.querySelector('.btn_down');
+const btn_up = document.querySelector('.btn_up');
+const pagin_2_text = document.querySelector('.pagin_2_text');
+const pagin_btn = document.querySelectorAll('.pagin_btn');
+reemuve_img = 0;
+pagin_2_text.innerHTML = 1;
+
+function down() {
+    if (reemuve_img > 0 && reemuve_img != 0) {
+        reemuve_img--;
+    } else {
+        reemuve_img = data_img.length - 1
+    }
+
+    img_set(data_img[reemuve_img]);
+
+    pagin_2_text.innerHTML = reemuve_img + 1;
+
+    pagin_btn.forEach(item => {
+        class_reemuve(item, 'pagin_btn')
+        if (item.id == reemuve_img + 1) {
+            class_add(item, 'btn_active')
+        }
+    })
+}
+
+function up() {
+    if (reemuve_img < data_img.length - 1) {
+        reemuve_img++;
+
+
+
+    } else {
+        reemuve_img = 0;
+    }
+
+    img_set(data_img[reemuve_img]);
+    pagin_2_text.innerHTML = reemuve_img + 1;
+    pagin_btn.forEach(item => {
+        class_reemuve(item, 'pagin_btn')
+        if (item.id == reemuve_img + 1) {
+            class_add(item, 'btn_active')
+        }
+    })
+}
+
+btn_down.addEventListener('click', down)
+
+btn_up.addEventListener('click', up)
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === "ArrowRight") {
+        up();
+    }
+    if (e.key === "ArrowLeft") {
+        down();
+    }
+})
 
 
 
